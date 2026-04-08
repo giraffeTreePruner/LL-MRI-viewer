@@ -1,6 +1,6 @@
-# LL-MRI Viewer
+# LLMRI Viewer
 
-An interactive web app for exploring [LL-MRI](https://github.com/giraffeTreePruner/LL-MRI-scanner) scan results. Visualizes the performance impact of RYS (Repeat Yourself Smarter) layer duplication configurations across transformer models.
+An interactive web app for exploring [LLMRI](https://github.com/giraffeTreePruner/LLMRI-scanner) scan results. Visualizes the performance impact of RYS (Repeat Yourself Smarter) layer duplication configurations across transformer models.
 
 ![Tech Stack](https://img.shields.io/badge/React-18-blue) ![D3](https://img.shields.io/badge/D3-7-orange) ![Vite](https://img.shields.io/badge/Vite-5-purple)
 
@@ -14,7 +14,7 @@ A configuration `(i, j)` causes the layer execution path `[0..j-1] + [i..N-1]`, 
 
 The technique reveals a three-phase transformer anatomy — **encoding**, **reasoning**, and **decoding** — that is consistent across model families. Middle layers function as complete reasoning *circuits*; duplicating them gives the model a second pass with its existing circuitry, essentially letting it think longer for free. A [follow-up sweep across 2 million candidates](https://dnhkng.github.io/posts/rys-ii/) confirmed that simple contiguous mid-stack blocks dominate the efficiency frontier: duplicating a single layer pair can capture most of the gain at under 2% compute overhead.
 
-LL-MRI exhaustively evaluates all valid `(i, j)` configurations for a given model and measures the effect on benchmark performance. The heatmap it renders is the same structural "brain scan" the original articles used to map transformer anatomy — LL-MRI Viewer makes those results interactive and explorable.
+LLMRI exhaustively evaluates all valid `(i, j)` configurations for a given model and measures the effect on benchmark performance. The heatmap it renders is the same structural "brain scan" the original articles used to map transformer anatomy — LLMRI Viewer makes those results interactive and explorable.
 
 ---
 
@@ -27,7 +27,7 @@ LL-MRI exhaustively evaluates all valid `(i, j)` configurations for a given mode
 - **Multi-select Comparison** — Shift-click multiple configs to compare them side by side
 - **Region Selection** — Click and drag to select a rectangular region and view aggregate stats
 - **Export Commands** — One-click copy of `hf_export` bash commands for any selected config
-- **File Upload** — Drag and drop your own LL-MRI JSON to visualize custom scan results
+- **File Upload** — Drag and drop your own LLMRI JSON to visualize custom scan results
 - **Demo Models** — Ships with a pre-computed scan for `Qwen2.5-3B-Instruct`
 
 ---
@@ -46,7 +46,7 @@ npm run preview    # Preview the built dist locally
 ## Project Structure
 
 ```
-LL-MRI-viewer/
+LLMRI-viewer/
 ├── public/
 │   └── data/                        # Pre-computed scan JSONs for demo
 │       └── qwen25-3b-instruct.json
@@ -81,7 +81,7 @@ LL-MRI-viewer/
 
 ## Scan JSON Format
 
-LL-MRI Viewer accepts JSON files produced by [LL-MRI](https://github.com/giraffeTreePruner/LL-MRI-scanner). Required top-level keys:
+LLMRI Viewer accepts JSON files produced by [LLMRI](https://github.com/giraffeTreePruner/LLMRI-scanner). Required top-level keys:
 
 ```json
 {

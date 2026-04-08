@@ -19,14 +19,14 @@ export function useScanData() {
   const [error, setError] = useState(null);
 
   function validate(data) {
-    // Accept legacy brainscan_version key from pre-rename scans
+    // Accept legacy brainscan_version key from pre-LLMRI-rename scans
     if (!('llmri_version' in data) && 'brainscan_version' in data) {
       data.llmri_version = data.brainscan_version;
     }
     const required = ['llmri_version', 'scan_metadata', 'results', 'heatmap_matrices'];
     for (const key of required) {
       if (!(key in data)) {
-        throw new Error(`Missing required key: "${key}". Is this a valid LL-MRI JSON?`);
+        throw new Error(`Missing required key: "${key}". Is this a valid LLMRI JSON?`);
       }
     }
   }
